@@ -8,6 +8,20 @@ def bienvenida(request):
         template_name="bienvenida.html",
         context={
             "message": "This is a context message",
-            "products": ["TV", "Radio", "Phone"],
+            "products": [
+                {
+                    "type": "tv",
+                    "vendor": "LG",
+                    "name": "LG OLED",
+                    "description": "LG OLED",
+                    "thumbnail": "",
+                },
+                {
+                    "name": "Radio"
+                },
+                {
+                    "name": "Phone"
+                },
+            ],
             "error": "Some shit happens"
         })
