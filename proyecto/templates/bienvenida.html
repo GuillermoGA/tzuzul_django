@@ -3,13 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>Bienvenida</title>
+    {% load static %} <!-- Prepare django to load static files -->
 </head>
 <body>
     <h1>Bienvenidos al Bootcamp de Django</h1>
     {{message}}
+    <br>
+    <br>
     {% for product in products %}
-        <p>{{product}}</p>
+        <img src="{% static product.thumbnail %}" alt={{product.name}}>
+
+        <table>
+        <tr><td>Name:</td><td>{{product.name}}</td></tr>
+        <tr><td>Vendor:</td><td>{{product.vendor}}</td></tr>
+        <tr><td>Description:</td><td>{{product.description}}</td></tr>
+        </table>
+        <br>
+        <br>
     {% endfor %}
+
 
     {% if error %}
         <h2>{{error}}</h2>

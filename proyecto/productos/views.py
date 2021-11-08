@@ -13,15 +13,16 @@ def bienvenida(request):
                     "type": "tv",
                     "vendor": "LG",
                     "name": "LG OLED",
-                    "description": "LG OLED",
-                    "thumbnail": "",
+                    "description": "The new LG OLED super power mola mogollon",
+                    "thumbnail": r"img\tv_lg_oled_55.png",
                 },
                 {
-                    "name": "Radio"
-                },
-                {
-                    "name": "Phone"
+                    "type": "phone",
+                    "vendor": "Apple",
+                    "name": "iPhone 13 Pro Max",
+                    "description": "The new iPhone super power mola mogollon",
+                    "thumbnail": r"img\iphone_13_pro_max.jpg",
                 },
             ],
-            "error": "Some shit happens"
+            # "error": "Some shit happens"
         })
