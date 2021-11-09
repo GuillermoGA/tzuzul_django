@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Bienvenida</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
     <h1>Bienvenidos al Bootcamp de Django</h1>
@@ -11,6 +13,7 @@
         <p>{{product}}</p>
     {% endfor %}
 
+    <img src="{% static 'img/iphone_13_pro_max.jpg' %}", alt="">
     {% if error %}
         <h2>{{error}}</h2>
     {% endif%}
