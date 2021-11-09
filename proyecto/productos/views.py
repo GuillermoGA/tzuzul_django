@@ -7,7 +7,6 @@ def bienvenida(request):
     # SELECT * FROM productos
     productos = Producto.objects.all()
 
-
     # SELECT * FROM productos WHERE precio < 5000
     productos_filtrados = Producto.objects.filter(precio__lte=9000)
 
@@ -21,10 +20,10 @@ def bienvenida(request):
         cantidad=10)
 
     # UPDATE productos WHERE ---
-    productos_filtrados.update(precio=5000)
+    productos_filtrados.update(precio=5000)    
 
     # DELETE productos WHERE ---
-    productos.filter(precio__gte=6000).delete()
+    productos.filter(precio__gte=10000).delete()
 
     return render(
         request=request,
