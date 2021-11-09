@@ -9,11 +9,18 @@
 <body>
     <h1>Bienvenidos al Bootcamp de Django</h1>
     {{message}}
-    {% for product in products %}
-        <p>{{product}}</p>
+    {% for producto in productos %}
+        <p>{{producto.nombre}}</p>
+        <img src="{{producto.img}}", alt="">
+    {% endfor %}
+
+    {% for producto in productos_filtrados %}
+        <p>{{producto.nombre}}</p>
+        <img src="{{producto.img}}", alt="">
     {% endfor %}
 
     <img src="{% static 'img/iphone_13_pro_max.jpg' %}", alt="">
+
     {% if error %}
         <h2>{{error}}</h2>
     {% endif%}
