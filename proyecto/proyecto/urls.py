@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from productos import views as productos_views
+from usuarios import views as usuarios_views
 from django.conf.urls.static import static
 from django.conf import settings
 
@@ -23,4 +24,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('bienvenida/', productos_views.bienvenida, name="bienvenida"),
     path('formulario/', productos_views.formulario, name="formulario"),
+    path('login/', usuarios_views.login_view, name="login"),
 ] + static(settings.STATIC_URL)

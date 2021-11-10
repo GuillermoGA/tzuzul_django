@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>    
+    <form method="POST", action="/login/">
+        {% csrf_token %}
+        <input type="email", name="email", id="">
+        <input type="password", name="password", id="">
+        <input type="submit", value="Iniciar sesion">
+    </form>
+
+    {% if error %}
+        <h2>{{error}}</h2>
+    {% endif %}
+    
+
+</body>
+</html>
