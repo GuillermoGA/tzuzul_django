@@ -7,8 +7,8 @@
 <body>    
     <form method="POST", action="/login/">
         {% csrf_token %}
-        <input type="email", name="email", id="">
-        <input type="password", name="password", id="">
+        <input type="username", name="username", id="", placeholder="Nombre">
+        <input type="password", name="password", id="", placeholder="Contraseña">
         <input type="submit", value="Iniciar sesion">
     </form>
 

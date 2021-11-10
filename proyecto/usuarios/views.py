@@ -5,10 +5,10 @@ from django.contrib.auth import login
 # Create your views here.
 def login_view(request):
     if request.method == "POST":
-        email = request.POST["email"]
+        username = request.POST["username"]
         password = request.POST["password"]
-        user = authenticate(email=email, password=password)
-        
+        user = authenticate(username=username, password=password)
+
         if user is not None:
             login(request, user)
             return render(request, "bienvenida.html")
