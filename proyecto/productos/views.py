@@ -35,3 +35,24 @@ def bienvenida(request):
             "productos_filtrados": productos_filtrados
             # "error": "Some shit happens"
         })
+
+def formulario(request):
+    if request.method == "POST":
+        nombre=request.POST["nombre"]
+        precio=request.POST["precio"]
+        descripcion=request.POST["descripcion"]
+        print(nombre)
+        print(descripcion)
+        print(precio)
+
+        if nombre == "":
+            print("Nombre vacio")
+            return render(request, "formulario.html", context={"errors": ["El nombre no puede estar vacio"]})
+
+        Producto.objects.create(
+            nombre=nombre, 
+            precio=precio, 
+            descripcion=descripcion)
+            
+        return render(request, "bienvenida.html")
+    return render(request, "formulario.html")

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>    
+    <form method="POST", action="/formulario/">
+        {% csrf_token %}
+        <input type="text", name="nombre", id="">
+        <input type="text", name="descripcion", id="">
+        <input type="number", name="precio", id="">
+        <input type="submit", value="Enviar">
+        <!--<button></button>-->
+    </form>
+
+    
+    {% if errors %}
+        {% for error in errors %}
+            <div>
+                <p>{{error}}</p>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+</body>
+</html>
