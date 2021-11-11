@@ -8,6 +8,7 @@
 </head>
 <body>
     <h1>Bienvenidos al Bootcamp de Django</h1>
+    <h1>User: {{request.user.email}}</h1>
     {{message}}
     {% for producto in productos %}
         <p>{{producto.nombre}}</p>
