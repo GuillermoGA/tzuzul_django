@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>    
+    <form method="POST", action="/formularioDjango/ ">
+        {% csrf_token %}
+        {{ formulario }}
+        <button>Crear Producto</button>
+
+        {% if formulario.subject.errors %}
+            {% for error in formulario.subject.errors %}
+            <div>
+                <p>{{error}}</p>
+            </div>
+            {% endfor %}
+        {% endif%}
+    </form>
+</body>
+</html>

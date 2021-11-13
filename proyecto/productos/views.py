@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from .models import Producto
+from .forms import ProductoForm
 
 # Create your views here.
 def bienvenida(request):
@@ -56,3 +57,22 @@ def formulario(request):
             
         return render(request, "bienvenida.html")
     return render(request, "formulario.html")
+
+def formularioDjangoForms(request):
+    if request.method == "POST":
+        form = ProductoForm(request.POST)
+
+        if form.is_valid():
+            data = form.cleaned_data
+            Producto.objects.create(
+                  nombre=data["nombre"], 
+                precio=data["precio"], 
+                cantidad=data["cantidad"], 
+                descripcion=data["descripcion"])
+        
+            return redirect("bienvenida")
+        else:
+            print(form.errors)
+
+    productoFormulario = ProductoForm()
+    return render(request, "djangoForms.html", {"formulario": productoFormulario})

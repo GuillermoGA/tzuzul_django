@@ -26,4 +26,6 @@ urlpatterns = [
     path('formulario/', productos_views.formulario, name="formulario"),
     path('login/', usuarios_views.login_view, name="login"),
     path('register/', usuarios_views.register_view, name="register"),
+    path('formularioDjango/', productos_views.formularioDjangoForms),
+    
 ] + static(settings.STATIC_URL)
