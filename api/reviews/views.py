@@ -24,5 +24,5 @@ def get_reviews(request):
 @api_view()
 def get_all_reviews(request):
     reviews = Review.objects.all()
-    reviews_serializer = ReviewSerializer(reviews)
+    reviews_serializer = ReviewSerializer(reviews, many=True)
     return Response(reviews_serializer.data)
