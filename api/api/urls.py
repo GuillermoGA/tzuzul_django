@@ -15,10 +15,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.urls import include
+from rest_framework import routers
+
 from reviews import views
+
+router = routers.SimpleRouter()
+router.register(r'reviews', views.ReviewsViewSet)
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/reviews', views.get_reviews),
+    path('api/reviews_simple', views.get_reviews),
     path('api/reviews/all', views.get_all_reviews),
+    path('api/reviews/all/class', views.AllReviews.as_view()),
+    path('api/', include((router.urls, 'api'))),
 ]
