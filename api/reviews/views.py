@@ -6,6 +6,12 @@ from rest_framework.generics import ListAPIView
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.response import Response
 
+# Auth imports
+from django.contrib.auth import authenticate
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.authtoken.models import Token
+from rest_framework.permissions import IsAuthenticated
+
 from reviews.serializers import ReviewSerializer
 from reviews.serializers import ReviewModelSerielizar
 
@@ -44,6 +50,9 @@ class ReviewsViewSet(ModelViewSet):
     # and then the queryset
     serializer_class = ReviewModelSerielizar  # ModelViewSet uses ModelSerializer
     queryset = Review.objects.all()
+
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
 
     # def create(self, request, *args, **kwargs):
     #     Review.objects.create(titulo="", comentario="", fecha=datetime.now())
