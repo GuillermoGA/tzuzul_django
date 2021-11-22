@@ -7,6 +7,7 @@ from rest_framework.viewsets import ModelViewSet
 from rest_framework.response import Response
 
 from reviews.serializers import ReviewSerializer
+from reviews.serializers import ReviewModelSerielizar
 
 from .models import Review
 
@@ -38,8 +39,11 @@ class AllReviews(ListAPIView):
 
 
 class ReviewsViewSet(ModelViewSet):
+    # The order is important
+    # set first the serializer_class 
+    # and then the queryset
+    serializer_class = ReviewModelSerielizar  # ModelViewSet uses ModelSerializer
     queryset = Review.objects.all()
-    serializer_class = ReviewSerializer
 
-    def create(self, request, *args, **kwargs):
-        Review.objects.create(titulo="", comentario="", fecha=datetime.now())
+    # def create(self, request, *args, **kwargs):
+    #     Review.objects.create(titulo="", comentario="", fecha=datetime.now())
