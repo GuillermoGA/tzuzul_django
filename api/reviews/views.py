@@ -58,6 +58,7 @@ class ReviewsViewSet(ModelViewSet):
 
     # def create(self, request, *args, **kwargs):
     #     Review.objects.create(titulo="", comentario="", fecha=datetime.now())
+
 class Login(APIView):
     def post(self, request):
         user = authenticate(username=request.data.get("username"), password=request.data.get("password"))
@@ -67,3 +68,6 @@ class Login(APIView):
 
         token, _ = Token.objects.get_or_create(user=user)
         return Response({"token": token.key}, status=status.HTTP_200_OK)
+
+def paginaPrincipal(request):
+    return render(request, "inicio.html")

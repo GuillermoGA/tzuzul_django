@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Hola Mundo</h1>
+
+    <script>
+        fetch("http://127.0.0.1:8000/api/login/",{
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: {
+                "username": "admin",
+                "password": "admin"
+            },            
+            method: "POST"
+        })
+        .then(respuesta=>respuesta.json())
+        .then(resultado=>console.log(resultado))
+    </script>
+</body>
+</html>
