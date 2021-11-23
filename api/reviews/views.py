@@ -3,6 +3,8 @@ from datetime import datetime
 from django.shortcuts import render
 from rest_framework.decorators import api_view
 from rest_framework.generics import ListAPIView
+from rest_framework.views import APIView
+from rest_framework import status
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.response import Response
 
@@ -56,3 +58,12 @@ class ReviewsViewSet(ModelViewSet):
 
     # def create(self, request, *args, **kwargs):
     #     Review.objects.create(titulo="", comentario="", fecha=datetime.now())
+class Login(APIView):
+    def post(self, request):
+        user = authenticate(username=request.data.get("username"), password=request.data.get("password"))
+
+        if not user:
+            return Response({"error": "Credenciales incorrectas"}, status=status.HTTP_403_FORBIDDEN)
+
+        token, _ = Token.objects.get_or_create(user=user)
+        return Response({"token": token.key}, status=status.HTTP_200_OK)

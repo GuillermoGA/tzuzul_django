@@ -30,4 +30,5 @@ urlpatterns = [
     path('api/reviews/all', views.get_all_reviews),
     path('api/reviews/all/class', views.AllReviews.as_view()),
     path('api/', include((router.urls, 'api'))),
+    path('api/login/', views.Login.as_view()),
 ]
