@@ -48,25 +48,28 @@ class AllReviews(ListAPIView):
 
 class ReviewsViewSet(ModelViewSet):
     # The order is important
-    # set first the serializer_class 
+    # set first the serializer_class
     # and then the queryset
     serializer_class = ReviewModelSerielizar  # ModelViewSet uses ModelSerializer
     queryset = Review.objects.all()
 
-
     # def create(self, request, *args, **kwargs):
     #     Review.objects.create(titulo="", comentario="", fecha=datetime.now())
+
 
 class Login(APIView):
     permission_classes = (AllowAny,)
     def post(self, request):
-        user = authenticate(username=request.data.get("username"), password=request.data.get("password"))
+        user = authenticate(
+            username=request.data.get("username"), 
+            password=request.data.get("password"))
 
         if not user:
             return Response({"error": "Credenciales incorrectas"}, status=status.HTTP_403_FORBIDDEN)
 
         token, _ = Token.objects.get_or_create(user=user)
         return Response({"token": token.key}, status=status.HTTP_200_OK)
+
 
 def paginaPrincipal(request):
     return render(request, "inicio.html")
