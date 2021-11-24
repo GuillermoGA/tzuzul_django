@@ -12,18 +12,27 @@
     <h1>Hola Mundo</h1>
 
     <script>
-        fetch("http://127.0.0.1:8000/api/login/",{
+        fetch("http://127.0.0.1:8000/api/login/", {
             headers: {
                 "Content-Type": "application/json"
             },
-            body: {
+            body: JSON.stringify({
                 "username": "admin",
                 "password": "admin"
-            },            
+            }),
             method: "POST"
         })
         .then(respuesta=>respuesta.json())
-        .then(resultado=>console.log(resultado))
+        .then(resultado=>{
+            const token = resultado.token
+            fetch("http://127.0.0.1:8000/api/reviews", {
+                method: "GET",
+                headers: {
+                    "Authorization": "Token " + token
+                }
+            }).then(respuesta=>respuesta.json())
+            .then(resultado=>console.log(resultado))
+        })
     </script>
 </body>
 </html>
