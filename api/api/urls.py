@@ -19,9 +19,11 @@ from django.urls import include
 from rest_framework import routers
 
 from reviews import views
+from movies import views as movies_views
 
 router = routers.SimpleRouter()
 router.register(r'reviews', views.ReviewsViewSet)
+router.register(r'movies', movies_views.MovieViewSet)
 
 
 urlpatterns = [

@@ -10,4 +10,4 @@ class Review(models.Model):
     fecha = models.DateField()
     estrellas = models.IntegerField()
 
-    movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
+    movie = models.ForeignKey(Movie, on_delete=models.CASCADE, null=True)
