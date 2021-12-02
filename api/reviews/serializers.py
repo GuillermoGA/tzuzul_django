@@ -12,4 +12,4 @@ class ReviewModelSerielizar(serializers.ModelSerializer):
     class Meta:
         model = Review
         # fields = ['__all__']  # Serialize all fields
-        fields = ["id", "titulo", "comentario", "fecha"]  # Serialize some fields
+        fields = ["id", "titulo", "comentario", "fecha", "estrellas", "movie"]  # Serialize some fields

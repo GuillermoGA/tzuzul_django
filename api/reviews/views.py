@@ -56,6 +56,17 @@ class ReviewsViewSet(ModelViewSet):
     # def create(self, request, *args, **kwargs):
     #     Review.objects.create(titulo="", comentario="", fecha=datetime.now())
 
+    def list(self, request, *args, **kwargs):
+        movie_id = request.query_params.get('movieId')
+        if movie_id is not None:
+            reviews = Review.objects.filter(movie__id=movie_id)
+            reviews_serializer = ReviewSerializer(reviews, many=True)
+            return Response(reviews_serializer.data)
+
+        reviews = Review.objects.all()
+        reviews_serializer = ReviewSerializer(reviews, many=True)
+        return Response(reviews_serializer.data)
+
 
 class Login(APIView):
     permission_classes = (AllowAny,)
