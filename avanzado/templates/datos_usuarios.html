@@ -8,5 +8,24 @@
 </head>
 <body>
     <h1>CSV</h1>
+    <form method="post" action="/usuarios/" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="archivo">Agregar registros</label>
+        <input type="file" id="archivo" name="archivo">
+        <button type="submit">Enviar</button>
+    </form>
+    <table>
+        <tbody>
+            {% for registro in data %}
+                <tr>                    
+                    {% for columna in registro %}
+                        <td>
+                            {{ columna }}
+                        </td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </body>
 </html>
