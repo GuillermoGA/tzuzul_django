@@ -16,13 +16,12 @@
     </form>
     <table>
         <tbody>
-            {% for registro in data %}
-                <tr>                    
-                    {% for columna in registro %}
-                        <td>
-                            {{ columna }}
-                        </td>
-                    {% endfor %}
+            {% for usuario in data %}
+                <tr>
+                    <td>{{ usuario.id }}</td>
+                    <td>{{ usuario.year_birth }}</td>
+                    <td>{{ usuario.education }}</td>
+                    <td>{{ usuario.income }}</td>
                 </tr>
             {% endfor %}
         </tbody>
