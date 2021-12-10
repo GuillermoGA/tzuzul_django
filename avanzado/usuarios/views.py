@@ -1,10 +1,11 @@
 import csv
+import tempfile
 from io import StringIO
 
 from django.shortcuts import render
 
 from .models import Usuario
-import tempfile
+
 
 def datos_usuarios(request):
     if request.method == "POST":
@@ -41,6 +42,7 @@ def datos_usuarios(request):
     data = Usuario.objects.all()
     return render(request, 'datos_usuarios.html', {"data": data})
 
+
 # Using InMemoryUploadedFile
 def __read_in_memory_csv(file):
     """ Read csv file directly from memory """
@@ -57,4 +59,3 @@ def __read_in_memory_csv(file):
     csv_data = csv.reader(file_data_buffer)
 
     return csv_data
-
