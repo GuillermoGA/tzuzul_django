@@ -146,7 +146,7 @@ AWS_S3_REGION_NAME = 'eu-west-3'
 
 # The endpoint of your bucket, more info:
 # http://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region
-AWS_S3_ENDPOINT_URL = 'https://s3.eu-west-3.amazonaws.com'
+AWS_S3_ENDPOINT_URL = 's3-website.eu-west-3.amazonaws.com'
 
 S3DIRECT_DESTINATIONS = {
     'primary_destination': {
