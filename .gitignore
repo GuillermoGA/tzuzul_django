@@ -168,4 +168,4 @@ Temporary Items
 # End of https://www.toptal.com/developers/gitignore/api/macos
 
 # Add media folder
-/media/
+*/media/*
