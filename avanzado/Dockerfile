@@ -18,5 +18,11 @@ RUN pip install -r requirements.txt
 # COPY . /src/
 COPY . .
 
+# ENV exaples
+ENV POSTGRES_DB_USER = postgres
+ENV POSTGRES_DB_PASSWORD = postgres
+
+ENV PORT = 8000
+
 # CMD "python manage.py runserver"
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+CMD ["python", "manage.py", "runserver", "0.0.0.0:${PORT}"]

@@ -8,19 +8,9 @@ services:
     environment:
        POSTGRES_PASSWORD: postgres
 
-#  migrations:
-#    build: .
-#    command: ["python", "manage.py", "migrate"]
-#    depends_on:
-#      - db
-#    volumes:
-#      - .:/src
-      -
   web:
-    build: .
-    command:
-      - python manage.py migrate
-      - python manage.py runserver 0.0.0.0:8000
+    image: ggilperez/aplicacion:1.0
+    command: ["python", "manage.py", "runserver", "0.0.0.0:8000"]
     volumes:
       - .:/src
     ports:
@@ -31,4 +21,3 @@ services:
       POSTGRES_DB_PASSWORD: postgres
     depends_on:
       - db
-#      - migrations
